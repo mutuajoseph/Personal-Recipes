@@ -1,6 +1,14 @@
+import { useNavigate } from "react-router-dom";
+
 export const RecipeCard = ({ recipe }) => {
+  const navigate = useNavigate()
+
+
   const handleViewRecipe = (recipe) => {
-    console.log(`Viewing recipe`, recipe);
+  
+    if (recipe.id) {
+      navigate(`/view-recipe/${recipe.id}`);
+    }
   }
 
   return (
