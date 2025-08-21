@@ -1,3 +1,4 @@
+
 export const AddRecipe = ({
   title,
   setTitle,
@@ -5,10 +6,9 @@ export const AddRecipe = ({
   setIngredients,
   instructions,
   setInstructions,
-  setRecipes,
-  recipes,
+  addRecipe
 }) => {
-  const handleAddRecipe = (e) => {
+  const handleAddRecipe = async (e) => {
     e.preventDefault();
 
     // contruct our new recipe object
@@ -28,7 +28,7 @@ export const AddRecipe = ({
       createdAt: new Date().toISOString(),
     };
 
-    setRecipes([...recipes, newRecipe])
+    await addRecipe(newRecipe)
 
     // Reset form fields
     setTitle("");

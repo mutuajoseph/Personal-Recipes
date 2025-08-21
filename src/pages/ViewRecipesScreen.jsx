@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { SearchFilter } from "../components/SearchFilter";
 import { RecipeList } from "../components/RecipeList";
-import { initialRecipes } from "../constants/initialRecipeData";
 import { useRecipeStore } from "../hooks/useRecipeStore";
 
 export const ViewRecipesScreen = () => {
-  const { recipes, setRecipes } = useRecipeStore();
+  const { recipes, fetchAllRecipes, removeRecipe, updateRecipe } = useRecipeStore();
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    setRecipes(initialRecipes);
+    fetchAllRecipes();
   }, []);
 
   // Filter recipes based on search term
@@ -22,7 +21,11 @@ export const ViewRecipesScreen = () => {
       <h1>View Recipes</h1>
 
       <SearchFilter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <RecipeList recipes={filteredRecipes} />
+      <RecipeList 
+        recipes={filteredRecipes} 
+        removeRecipe={removeRecipe} 
+        updateRecipe={updateRecipe}
+       />
     </div>
   );
 };

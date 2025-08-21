@@ -3,7 +3,7 @@ import { AddRecipe } from "../components/AddRecipe";
 import { useRecipeStore } from "../hooks/useRecipeStore";
 
 export const AddRecipeScreen = () => {
-  const { recipes, setRecipes } = useRecipeStore();
+  const { addRecipe } = useRecipeStore();
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -19,8 +19,7 @@ export const AddRecipeScreen = () => {
         setIngredients={setIngredients}
         instructions={instructions}
         setInstructions={setInstructions}
-        setRecipes={setRecipes}
-        recipes={recipes}
+        addRecipe={addRecipe}
       />
     </div>
   );
